@@ -1,0 +1,3 @@
+{
+  "packages": ["yt-dlp@latest", "ffmpeg_7@latest", "nodejs_22@latest"]
+}
