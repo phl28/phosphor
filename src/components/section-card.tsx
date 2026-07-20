@@ -1,4 +1,4 @@
-import type { KeyMoment } from 'tl-dw'
+import type { KeyMoment } from 'phosphoresce'
 
 export function SectionCard({
   moment,

@@ -1,5 +1,5 @@
 {
-  "name": "tl-dw",
+  "name": "phosphoresce",
   "version": "0.1.0",
   "description": "YouTube video summarization pipeline: Gemini video analysis, transcript fetching, yt-dlp download, and ffmpeg frame extraction",
   "type": "module",
@@ -31,7 +31,7 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/phl28/phosphor.git",
-    "directory": "packages/tl-dw"
+    "directory": "packages/phosphoresce"
   },
   "license": "MIT"
 }

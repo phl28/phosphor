@@ -1,4 +1,4 @@
-import type { JobStatus } from 'tl-dw'
+import type { JobStatus } from 'phosphoresce'
 
 type Listener = (status: JobStatus) => void
 

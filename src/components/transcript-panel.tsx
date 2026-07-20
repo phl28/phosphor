@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import type { TranscriptEntry } from 'tl-dw'
+import type { TranscriptEntry } from 'phosphoresce'
 
 function formatTime(seconds: number): string {
   const m = Math.floor(seconds / 60)

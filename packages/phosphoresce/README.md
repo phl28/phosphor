@@ -1,11 +1,11 @@
-# tl-dw
+# phosphoresce
 
 YouTube video summarization pipeline: Gemini video analysis (key moments + TL;DR), caption fetching, yt-dlp download, and ffmpeg frame extraction at key timestamps.
 
 ## Usage
 
 ```ts
-import { summarizeVideo } from 'tl-dw'
+import { summarizeVideo } from 'phosphoresce'
 
 const summary = await summarizeVideo('https://www.youtube.com/watch?v=...', {
   jobId: 'some-unique-id',
