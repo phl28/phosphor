@@ -15,7 +15,7 @@ Progress updates are streamed in real time via Server-Sent Events.
 
 - **Frontend**: React 19, TanStack Router, TanStack Query, Tailwind CSS v4
 - **Backend**: TanStack Start (Vite, Node.js)
-- **AI**: Google Gemini (gemini-2.5-flash)
+- **AI**: Google Gemini (gemini-3.5-flash)
 - **Tools**: yt-dlp, ffmpeg
 
 ## Prerequisites

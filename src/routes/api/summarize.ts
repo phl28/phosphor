@@ -1,6 +1,7 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { createJob } from '~/lib/job-store'
 import { runPipeline } from '~/lib/summarizer'
+import { extractVideoId } from '~/lib/transcript'
 
 export const Route = createFileRoute('/api/summarize')({
   server: {
@@ -9,8 +10,8 @@ export const Route = createFileRoute('/api/summarize')({
         const body = await request.json()
         const url = body?.url
 
-        if (!url || typeof url !== 'string') {
-          return Response.json({ error: 'Missing url' }, { status: 400 })
+        if (!url || typeof url !== 'string' || !extractVideoId(url)) {
+          return Response.json({ error: 'Missing or invalid YouTube URL' }, { status: 400 })
         }
 
         if (!process.env.GEMINI_API_KEY) {

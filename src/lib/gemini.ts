@@ -24,65 +24,59 @@ export interface GeminiAnalysis {
   keyMoments: GeminiMoment[]
 }
 
-function buildPrompt(videoUrl: string, durationHint?: string): string {
-  const momentRange = !durationHint
-    ? '8-15'
-    : parseDuration(durationHint) < 300
-      ? '5-8'
-      : parseDuration(durationHint) < 1800
-        ? '8-15'
-        : parseDuration(durationHint) < 7200
-          ? '15-25'
-          : '20-30'
-
-  return `Analyze this YouTube video and provide a structured summary.
-
-Return a JSON object with this exact structure (no markdown, no code fences, just raw JSON):
-{
-  "videoTitle": "the video title",
-  "duration": "MM:SS or H:MM:SS format",
-  "tldr": "2-3 sentence overall summary",
-  "keyMoments": [
-    {
-      "timestamp": "M:SS",
-      "timestampSeconds": 0,
-      "title": "short section title",
-      "description": "1-2 sentence description of what happens"
-    }
-  ]
+const RESPONSE_SCHEMA = {
+  type: 'object',
+  properties: {
+    videoTitle: { type: 'string' },
+    duration: { type: 'string', description: 'MM:SS or H:MM:SS format' },
+    tldr: { type: 'string', description: '2-3 sentence overall summary' },
+    keyMoments: {
+      type: 'array',
+      items: {
+        type: 'object',
+        properties: {
+          timestamp: { type: 'string', description: 'M:SS or H:MM:SS format' },
+          timestampSeconds: { type: 'number' },
+          title: { type: 'string', description: 'short section title' },
+          description: { type: 'string', description: '1-2 sentence description of what happens' },
+        },
+        required: ['timestamp', 'timestampSeconds', 'title', 'description'],
+      },
+    },
+  },
+  required: ['videoTitle', 'duration', 'tldr', 'keyMoments'],
 }
+
+const PROMPT = `Analyze this video and provide a structured summary.
 
 Requirements:
-- Identify ${momentRange} key moments spread across the video
-- Timestamps must be accurate and in chronological order
+- Identify key moments spread across the video: 5-8 for videos under 5 minutes, 8-15 under 30 minutes, 15-25 for longer videos
+- Timestamps must be accurate, in chronological order, and within the video's duration
 - Each key moment should capture a distinct topic/section change
 - The tldr should capture the main thesis/takeaway
-- timestampSeconds must be the timestamp converted to total seconds
-
-Video URL: ${videoUrl}`
-}
-
-function parseDuration(d: string): number {
-  const parts = d.split(':').map(Number)
-  if (parts.length === 3) return parts[0] * 3600 + parts[1] * 60 + parts[2]
-  if (parts.length === 2) return parts[0] * 60 + parts[1]
-  return parts[0] ?? 0
-}
+- timestampSeconds must be the timestamp converted to total seconds`
 
 export async function analyzeVideo(videoUrl: string): Promise<GeminiAnalysis> {
   const response = await getAI().models.generateContent({
-    model: 'gemini-2.5-flash',
+    model: 'gemini-3.5-flash',
     contents: [
       {
         role: 'user',
         parts: [
-          { text: buildPrompt(videoUrl) },
+          { fileData: { fileUri: videoUrl } },
+          { text: PROMPT },
         ],
       },
     ],
+    config: {
+      responseMimeType: 'application/json',
+      responseJsonSchema: RESPONSE_SCHEMA,
+    },
   })
 
-  const text = response.text?.trim() ?? ''
-  const cleaned = text.replace(/^```json\s*/, '').replace(/```\s*$/, '')
-  return JSON.parse(cleaned) as GeminiAnalysis
+  const analysis = JSON.parse(response.text ?? '') as GeminiAnalysis
+  if (!Array.isArray(analysis.keyMoments) || analysis.keyMoments.length === 0) {
+    throw new Error('Video analysis returned no key moments')
+  }
+  return analysis
 }

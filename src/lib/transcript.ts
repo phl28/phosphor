@@ -1,7 +1,7 @@
 import { getSubtitles } from 'youtube-caption-extractor'
 import type { TranscriptEntry } from './types'
 
-function extractVideoId(url: string): string | null {
+export function extractVideoId(url: string): string | null {
   const patterns = [
     /[?&]v=([\w-]{11})/,
     /youtu\.be\/([\w-]{11})/,
