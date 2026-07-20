@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { UrlInput } from '~/components/url-input'
 import { ProgressTracker } from '~/components/progress-tracker'
 import { SummaryView } from '~/components/summary-view'
-import type { JobStatus, VideoSummary } from 'phosphor-video'
+import type { JobStatus, VideoSummary } from 'tl-dw'
 
 export const Route = createFileRoute('/')({
   component: Home,

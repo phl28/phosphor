@@ -13,9 +13,9 @@
     "noEmit": true,
     "paths": {
       "~/*": ["./src/*"],
-      "phosphor-video": ["./packages/phosphor-video/src/index.ts"]
+      "tl-dw": ["./packages/tl-dw/src/index.ts"]
     },
     "baseUrl": "."
   },
-  "include": ["src/**/*", "packages/phosphor-video/src/**/*", "vite.config.ts"]
+  "include": ["src/**/*", "packages/tl-dw/src/**/*", "vite.config.ts"]
 }

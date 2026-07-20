@@ -1,4 +1,4 @@
-import type { KeyMoment } from 'phosphor-video'
+import type { KeyMoment } from 'tl-dw'
 
 export function SectionCard({
   moment,

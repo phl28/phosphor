@@ -8,12 +8,12 @@
   ],
   "scripts": {
     "dev": "vite dev",
-    "build": "npm run build -w phosphor-video && vite build",
+    "build": "npm run build -w tl-dw && vite build",
     "start": "node .output/server/index.mjs",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "phosphor-video": "*",
+    "tl-dw": "*",
     "@tanstack/react-query": "^5.66.0",
     "@tanstack/react-router": "^1.166.2",
     "@tanstack/react-start": "^1.166.2",

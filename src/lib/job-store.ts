@@ -1,4 +1,4 @@
-import type { JobStatus } from 'phosphor-video'
+import type { JobStatus } from 'tl-dw'
 
 type Listener = (status: JobStatus) => void
 

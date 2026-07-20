@@ -1,4 +1,4 @@
-import type { JobStatus } from 'phosphor-video'
+import type { JobStatus } from 'tl-dw'
 
 const STAGE_LABELS: Record<string, string> = {
   analyzing: 'Analyzing video with AI',

@@ -1,5 +1,5 @@
 import path from 'node:path'
-import { summarizeVideo } from 'phosphor-video'
+import { summarizeVideo } from 'tl-dw'
 import { updateJob } from './job-store'
 
 export async function runJob(jobId: string, videoUrl: string) {
