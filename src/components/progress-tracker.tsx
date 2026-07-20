@@ -18,6 +18,8 @@ export function ProgressTracker({ status }: { status: JobStatus }) {
     )
   }
 
+  if (status.stage === 'complete') return null
+
   const label = STAGE_LABELS[status.stage] ?? status.message
 
   return (

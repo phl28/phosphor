@@ -3,6 +3,14 @@ import { execFile } from 'node:child_process'
 import { promisify } from 'node:util'
 import path from 'node:path'
 
+import { updateJob } from './job-store'
+import { analyzeVideo } from './gemini'
+import { fetchTranscript } from './transcript'
+import { downloadVideo } from './video-download'
+import { extractFrames } from './frame-extractor'
+import { generateMarkdown } from './markdown-generator'
+import type { VideoSummary, KeyMoment } from './types'
+
 const execFileAsync = promisify(execFile)
 
 async function binaryExists(name: string): Promise<boolean> {
@@ -13,13 +21,6 @@ async function binaryExists(name: string): Promise<boolean> {
     return false
   }
 }
-import { updateJob } from './job-store'
-import { analyzeVideo } from './gemini'
-import { fetchTranscript } from './transcript'
-import { downloadVideo } from './video-download'
-import { extractFrames } from './frame-extractor'
-import { generateMarkdown } from './markdown-generator'
-import type { VideoSummary, KeyMoment } from './types'
 
 export async function runPipeline(jobId: string, videoUrl: string) {
   try {
