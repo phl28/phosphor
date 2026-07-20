@@ -58,7 +58,7 @@ Requirements:
 
 export async function analyzeVideo(videoUrl: string): Promise<GeminiAnalysis> {
   const response = await getAI().models.generateContent({
-    model: 'gemini-2.5-flash',
+    model: 'gemini-3.5-flash',
     contents: [
       {
         role: 'user',
