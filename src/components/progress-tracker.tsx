@@ -1,4 +1,4 @@
-import type { JobStatus } from '@phl28/phosphor-core'
+import type { JobStatus } from 'phosphor-video'
 
 const STAGE_LABELS: Record<string, string> = {
   analyzing: 'Analyzing video with AI',

@@ -1,4 +1,4 @@
-import type { VideoSummary } from '@phl28/phosphor-core'
+import type { VideoSummary } from 'phosphor-video'
 import { SectionCard } from './section-card'
 import { TranscriptPanel } from './transcript-panel'
 

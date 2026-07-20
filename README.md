@@ -13,7 +13,7 @@ Progress updates are streamed in real time via Server-Sent Events.
 
 ## Repo layout
 
-- `packages/phosphor-core` — the summarization pipeline as a standalone npm package ([README](packages/phosphor-core/README.md)). Framework-free; other apps can depend on it.
+- `packages/phosphor-video` — the summarization pipeline as a standalone npm package ([README](packages/phosphor-video/README.md)). Framework-free; other apps can depend on it.
 - `src/` — the web app (routes, components, in-memory job store) consuming the package.
 
 ## Tech stack

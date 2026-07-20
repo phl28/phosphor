@@ -1,4 +1,4 @@
-import type { KeyMoment } from '@phl28/phosphor-core'
+import type { KeyMoment } from 'phosphor-video'
 
 export function SectionCard({
   moment,

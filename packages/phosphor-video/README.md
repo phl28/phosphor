@@ -1,11 +1,11 @@
-# @phl28/phosphor-core
+# phosphor-video
 
 YouTube video summarization pipeline: Gemini video analysis (key moments + TL;DR), caption fetching, yt-dlp download, and ffmpeg frame extraction at key timestamps.
 
 ## Usage
 
 ```ts
-import { summarizeVideo } from '@phl28/phosphor-core'
+import { summarizeVideo } from 'phosphor-video'
 
 const summary = await summarizeVideo('https://www.youtube.com/watch?v=...', {
   jobId: 'some-unique-id',

@@ -1,5 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router'
-import { extractVideoId } from '@phl28/phosphor-core'
+import { extractVideoId } from 'phosphor-video'
 import { createJob } from '~/lib/job-store'
 import { runJob } from '~/lib/run-job'
 

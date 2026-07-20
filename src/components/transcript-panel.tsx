@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import type { TranscriptEntry } from '@phl28/phosphor-core'
+import type { TranscriptEntry } from 'phosphor-video'
 
 function formatTime(seconds: number): string {
   const m = Math.floor(seconds / 60)
