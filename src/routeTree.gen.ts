@@ -10,14 +10,19 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as OutputSplatRouteImport } from './routes/output/$'
 import { Route as ApiSummarizeRouteImport } from './routes/api/summarize'
 import { Route as ApiSummaryJobIdRouteImport } from './routes/api/summary/$jobId'
 import { Route as ApiProgressJobIdRouteImport } from './routes/api/progress/$jobId'
-import { Route as OutputJobIdScreenshotsFilenameRouteImport } from './routes/output/$jobId/screenshots/$filename'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OutputSplatRoute = OutputSplatRouteImport.update({
+  id: '/output/$',
+  path: '/output/$',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ApiSummarizeRoute = ApiSummarizeRouteImport.update({
@@ -35,65 +40,59 @@ const ApiProgressJobIdRoute = ApiProgressJobIdRouteImport.update({
   path: '/api/progress/$jobId',
   getParentRoute: () => rootRouteImport,
 } as any)
-const OutputJobIdScreenshotsFilenameRoute =
-  OutputJobIdScreenshotsFilenameRouteImport.update({
-    id: '/output/$jobId/screenshots/$filename',
-    path: '/output/$jobId/screenshots/$filename',
-    getParentRoute: () => rootRouteImport,
-  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/api/summarize': typeof ApiSummarizeRoute
+  '/output/$': typeof OutputSplatRoute
   '/api/progress/$jobId': typeof ApiProgressJobIdRoute
   '/api/summary/$jobId': typeof ApiSummaryJobIdRoute
-  '/output/$jobId/screenshots/$filename': typeof OutputJobIdScreenshotsFilenameRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/api/summarize': typeof ApiSummarizeRoute
+  '/output/$': typeof OutputSplatRoute
   '/api/progress/$jobId': typeof ApiProgressJobIdRoute
   '/api/summary/$jobId': typeof ApiSummaryJobIdRoute
-  '/output/$jobId/screenshots/$filename': typeof OutputJobIdScreenshotsFilenameRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/api/summarize': typeof ApiSummarizeRoute
+  '/output/$': typeof OutputSplatRoute
   '/api/progress/$jobId': typeof ApiProgressJobIdRoute
   '/api/summary/$jobId': typeof ApiSummaryJobIdRoute
-  '/output/$jobId/screenshots/$filename': typeof OutputJobIdScreenshotsFilenameRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
     | '/api/summarize'
+    | '/output/$'
     | '/api/progress/$jobId'
     | '/api/summary/$jobId'
-    | '/output/$jobId/screenshots/$filename'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/api/summarize'
+    | '/output/$'
     | '/api/progress/$jobId'
     | '/api/summary/$jobId'
-    | '/output/$jobId/screenshots/$filename'
   id:
     | '__root__'
     | '/'
     | '/api/summarize'
+    | '/output/$'
     | '/api/progress/$jobId'
     | '/api/summary/$jobId'
-    | '/output/$jobId/screenshots/$filename'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ApiSummarizeRoute: typeof ApiSummarizeRoute
+  OutputSplatRoute: typeof OutputSplatRoute
   ApiProgressJobIdRoute: typeof ApiProgressJobIdRoute
   ApiSummaryJobIdRoute: typeof ApiSummaryJobIdRoute
-  OutputJobIdScreenshotsFilenameRoute: typeof OutputJobIdScreenshotsFilenameRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -103,6 +102,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/output/$': {
+      id: '/output/$'
+      path: '/output/$'
+      fullPath: '/output/$'
+      preLoaderRoute: typeof OutputSplatRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/api/summarize': {
@@ -126,22 +132,15 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiProgressJobIdRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/output/$jobId/screenshots/$filename': {
-      id: '/output/$jobId/screenshots/$filename'
-      path: '/output/$jobId/screenshots/$filename'
-      fullPath: '/output/$jobId/screenshots/$filename'
-      preLoaderRoute: typeof OutputJobIdScreenshotsFilenameRouteImport
-      parentRoute: typeof rootRouteImport
-    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ApiSummarizeRoute: ApiSummarizeRoute,
+  OutputSplatRoute: OutputSplatRoute,
   ApiProgressJobIdRoute: ApiProgressJobIdRoute,
   ApiSummaryJobIdRoute: ApiSummaryJobIdRoute,
-  OutputJobIdScreenshotsFilenameRoute: OutputJobIdScreenshotsFilenameRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

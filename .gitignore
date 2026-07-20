@@ -3,6 +3,6 @@ node_modules
 dist
 .vinxi
 .env
-storage/videos/
-output/
+/storage/videos/
+/output/
 *.local
