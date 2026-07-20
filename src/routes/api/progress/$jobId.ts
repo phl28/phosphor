@@ -7,13 +7,15 @@ export const Route = createFileRoute('/api/progress/$jobId')({
     handlers: {
       GET: async ({ params }) => {
         const encoder = new TextEncoder()
+        let unsubscribe: (() => void) | undefined
         const stream = new ReadableStream({
           start(controller) {
-            const unsubscribe = subscribe(params.jobId, (status: JobStatus) => {
+            unsubscribe = subscribe(params.jobId, (status: JobStatus) => {
               try {
                 controller.enqueue(encoder.encode(`data: ${JSON.stringify(status)}\n\n`))
                 if (status.stage === 'complete' || status.stage === 'error') {
                   setTimeout(() => {
+                    unsubscribe?.()
                     try {
                       controller.close()
                     } catch {}
@@ -21,6 +23,9 @@ export const Route = createFileRoute('/api/progress/$jobId')({
                 }
               } catch {}
             })
+          },
+          cancel() {
+            unsubscribe?.()
           },
         })
 
