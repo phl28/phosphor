@@ -1,7 +1,7 @@
 import { createFileRoute } from '@tanstack/react-router'
+import { extractVideoId } from '@phl28/phosphor-core'
 import { createJob } from '~/lib/job-store'
-import { runPipeline } from '~/lib/summarizer'
-import { extractVideoId } from '~/lib/transcript'
+import { runJob } from '~/lib/run-job'
 
 export const Route = createFileRoute('/api/summarize')({
   server: {
@@ -21,7 +21,7 @@ export const Route = createFileRoute('/api/summarize')({
         const jobId = crypto.randomUUID()
         createJob(jobId)
 
-        runPipeline(jobId, url)
+        runJob(jobId, url)
 
         return Response.json({ jobId })
       },

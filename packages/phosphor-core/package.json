@@ -1,0 +1,37 @@
+{
+  "name": "@phl28/phosphor-core",
+  "version": "0.1.0",
+  "description": "YouTube video summarization pipeline: Gemini video analysis, transcript fetching, yt-dlp download, and ffmpeg frame extraction",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "prepack": "npm run build"
+  },
+  "dependencies": {
+    "@google/genai": "^1.0.0",
+    "youtube-caption-extractor": "^1.2.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.0"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/phl28/phosphor.git",
+    "directory": "packages/phosphor-core"
+  },
+  "license": "MIT"
+}

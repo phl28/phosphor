@@ -12,9 +12,10 @@
     "isolatedModules": true,
     "noEmit": true,
     "paths": {
-      "~/*": ["./src/*"]
+      "~/*": ["./src/*"],
+      "@phl28/phosphor-core": ["./packages/phosphor-core/src/index.ts"]
     },
     "baseUrl": "."
   },
-  "include": ["src/**/*", "vite.config.ts"]
+  "include": ["src/**/*", "packages/phosphor-core/src/**/*", "vite.config.ts"]
 }

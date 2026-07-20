@@ -1,4 +1,4 @@
-import type { JobStatus, VideoSummary } from './types'
+import type { JobStatus } from '@phl28/phosphor-core'
 
 type Listener = (status: JobStatus) => void
 

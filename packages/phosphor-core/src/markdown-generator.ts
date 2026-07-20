@@ -1,4 +1,4 @@
-import type { VideoSummary } from './types'
+import type { VideoSummary } from './types.js'
 
 function formatTime(seconds: number): string {
   const m = Math.floor(seconds / 60)
@@ -30,7 +30,7 @@ export function generateMarkdown(summary: VideoSummary): string {
     lines.push(m.description)
     lines.push('')
     if (m.screenshotPath) {
-      lines.push(`![${m.timestamp}](${m.screenshotPath})`)
+      lines.push(`![${m.timestamp}](./${m.screenshotPath})`)
       lines.push('')
     }
   }

@@ -1,5 +1,5 @@
 import { getSubtitles } from 'youtube-caption-extractor'
-import type { TranscriptEntry } from './types'
+import type { TranscriptEntry } from './types.js'
 
 export function extractVideoId(url: string): string | null {
   const patterns = [
