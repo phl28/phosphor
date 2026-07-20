@@ -1,4 +1,4 @@
-import type { JobStatus, VideoSummary } from './types'
+import type { JobStatus } from 'tl-dw'
 
 type Listener = (status: JobStatus) => void
 

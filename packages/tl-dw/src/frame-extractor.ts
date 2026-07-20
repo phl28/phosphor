@@ -30,7 +30,7 @@ export async function extractFrames(
         '-y',
         outPath,
       ], { timeout: 30_000 })
-      paths.push(`./screenshots/${filename}`)
+      paths.push(`screenshots/${filename}`)
     } catch {
       paths.push('')
     }

@@ -12,9 +12,10 @@
     "isolatedModules": true,
     "noEmit": true,
     "paths": {
-      "~/*": ["./src/*"]
+      "~/*": ["./src/*"],
+      "tl-dw": ["./packages/tl-dw/src/index.ts"]
     },
     "baseUrl": "."
   },
-  "include": ["src/**/*", "vite.config.ts"]
+  "include": ["src/**/*", "packages/tl-dw/src/**/*", "vite.config.ts"]
 }

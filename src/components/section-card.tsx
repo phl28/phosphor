@@ -1,4 +1,4 @@
-import type { KeyMoment } from '~/lib/types'
+import type { KeyMoment } from 'tl-dw'
 
 export function SectionCard({
   moment,

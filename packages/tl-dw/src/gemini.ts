@@ -1,10 +1,12 @@
 import { GoogleGenAI } from '@google/genai'
 
+export const DEFAULT_MODEL = 'gemini-3.5-flash'
+
 let _ai: GoogleGenAI | null = null
 function getAI(): GoogleGenAI {
   if (!_ai) {
     const key = process.env.GEMINI_API_KEY
-    if (!key) throw new Error('GEMINI_API_KEY is not set. Add it to your .env file.')
+    if (!key) throw new Error('GEMINI_API_KEY is not set.')
     _ai = new GoogleGenAI({ apiKey: key })
   }
   return _ai
@@ -56,9 +58,9 @@ Requirements:
 - The tldr should capture the main thesis/takeaway
 - timestampSeconds must be the timestamp converted to total seconds`
 
-export async function analyzeVideo(videoUrl: string): Promise<GeminiAnalysis> {
+export async function analyzeVideo(videoUrl: string, model: string = DEFAULT_MODEL): Promise<GeminiAnalysis> {
   const response = await getAI().models.generateContent({
-    model: 'gemini-3.5-flash',
+    model,
     contents: [
       {
         role: 'user',

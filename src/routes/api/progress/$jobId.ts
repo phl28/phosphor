@@ -1,6 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { subscribe } from '~/lib/job-store'
-import type { JobStatus } from '~/lib/types'
+import type { JobStatus } from 'tl-dw'
 
 export const Route = createFileRoute('/api/progress/$jobId')({
   server: {

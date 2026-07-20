@@ -4,12 +4,10 @@ import path from 'node:path'
 
 export async function downloadVideo(
   videoUrl: string,
-  jobId: string,
+  outputPath: string,
   onProgress?: (pct: number) => void,
 ): Promise<string> {
-  const dir = path.resolve('storage/videos')
-  await mkdir(dir, { recursive: true })
-  const outputPath = path.join(dir, `${jobId}.mp4`)
+  await mkdir(path.dirname(outputPath), { recursive: true })
 
   await new Promise<void>((resolve, reject) => {
     const proc = spawn(

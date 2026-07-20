@@ -11,6 +11,11 @@ YouTube video summarizer that generates AI-powered visual summaries with key mom
 
 Progress updates are streamed in real time via Server-Sent Events.
 
+## Repo layout
+
+- `packages/tl-dw` — the summarization pipeline as a standalone npm package ([README](packages/tl-dw/README.md)). Framework-free; other apps can depend on it.
+- `src/` — the web app (routes, components, in-memory job store) consuming the package.
+
 ## Tech stack
 
 - **Frontend**: React 19, TanStack Router, TanStack Query, Tailwind CSS v4

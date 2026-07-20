@@ -23,11 +23,14 @@ export interface VideoSummary {
   markdownPath: string
 }
 
-export type JobStatus =
+export type ProgressStatus =
   | { stage: 'analyzing'; message: string }
   | { stage: 'fetching-transcript'; message: string }
   | { stage: 'downloading'; message: string; progress?: number }
   | { stage: 'extracting-frames'; message: string; current?: number; total?: number }
   | { stage: 'generating'; message: string }
+
+export type JobStatus =
+  | ProgressStatus
   | { stage: 'complete'; summary: VideoSummary }
   | { stage: 'error'; error: string }

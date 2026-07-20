@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import type { TranscriptEntry } from '~/lib/types'
+import type { TranscriptEntry } from 'tl-dw'
 
 function formatTime(seconds: number): string {
   const m = Math.floor(seconds / 60)
