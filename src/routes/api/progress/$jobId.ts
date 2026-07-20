@@ -1,6 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { subscribe } from '~/lib/job-store'
-import type { JobStatus } from 'tl-dw'
+import type { JobStatus } from 'phosphoresce'
 
 export const Route = createFileRoute('/api/progress/$jobId')({
   server: {

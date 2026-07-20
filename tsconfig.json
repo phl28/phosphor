@@ -13,9 +13,9 @@
     "noEmit": true,
     "paths": {
       "~/*": ["./src/*"],
-      "tl-dw": ["./packages/tl-dw/src/index.ts"]
+      "phosphoresce": ["./packages/phosphoresce/src/index.ts"]
     },
     "baseUrl": "."
   },
-  "include": ["src/**/*", "packages/tl-dw/src/**/*", "vite.config.ts"]
+  "include": ["src/**/*", "packages/phosphoresce/src/**/*", "vite.config.ts"]
 }

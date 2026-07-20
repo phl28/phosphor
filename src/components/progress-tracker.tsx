@@ -1,4 +1,4 @@
-import type { JobStatus } from 'tl-dw'
+import type { JobStatus } from 'phosphoresce'
 
 const STAGE_LABELS: Record<string, string> = {
   analyzing: 'Analyzing video with AI',

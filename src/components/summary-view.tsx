@@ -1,4 +1,4 @@
-import type { VideoSummary } from 'tl-dw'
+import type { VideoSummary } from 'phosphoresce'
 import { SectionCard } from './section-card'
 import { TranscriptPanel } from './transcript-panel'
 

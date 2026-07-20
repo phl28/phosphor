@@ -1,5 +1,5 @@
 import path from 'node:path'
-import { summarizeVideo } from 'tl-dw'
+import { summarizeVideo } from 'phosphoresce'
 import { updateJob } from './job-store'
 
 export async function runJob(jobId: string, videoUrl: string) {
